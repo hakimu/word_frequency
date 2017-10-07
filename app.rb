@@ -14,6 +14,10 @@ def word_frequency(text)
   word_hash
 end
 
+# def parse_text_for_punctuation(text)
+#   text.gsub(".","")
+# end
+
 def parse_text_for_punctuation(text)
-  text.gsub(".","")
+  text.gsub(/[\.\?!]/,"")
 end
