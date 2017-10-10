@@ -7,7 +7,7 @@ class WordFrequencyTest < Minitest::Test
 
   def test_parse_text
     test_string = "This sentence has a period."
-    result = parse_text_for_punctuation(test_string)
+    result = parse_punctuation(test_string)
     refute result.include?(".")
   end
 
@@ -24,8 +24,44 @@ class WordFrequencyTest < Minitest::Test
 
   def test_for_question_mark
     text = "Is it raining?"
-    result = parse_text_for_punctuation(text)
+    result = parse_punctuation(text)
     refute result.include?("?")
+  end
+
+  def test_for_period
+    text = "It's raining."
+    result = parse_punctuation(text)
+    refute result.include?(".")
+  end
+
+  def test_for_colon
+    text = "The : is in the sentence"
+    result = parse_punctuation(text)
+    refute result.include?(":")
+  end
+
+  def test_for_semi_colon
+    text = "The semi colon is at the end;"
+    result = parse_punctuation(text)
+    refute result.include?(";")
+  end
+
+  def test_for_dash
+    text = "Today is - Sunday"
+    result = parse_punctuation(text)
+    refute result.include?("-")
+  end
+
+  def test_for_double_quotes
+    text = "She said, \"Hi\""
+    result = parse_double_quotes(text)
+    refute result.include?('"')
+  end
+
+  def test_for_coma
+    text = "I went here third, second, first and last"
+    result = parse_punctuation(text)
+    refute result.include?(",")
   end
 
 end
