@@ -34,6 +34,9 @@ class WordFrequencyTest < Minitest::Test
     refute result.include?(".")
   end
 
+  def test_for_exclamation
+  end
+
   def test_for_colon
     text = "The : is in the sentence"
     result = parse_punctuation(text)

@@ -14,10 +14,10 @@ def word_frequency(text_from_file)
   word_hash
 end
 
-def parse_punctuation(text)
-  text.gsub(/[\.\?!:;,-]/,"")
+def parse_punctuation(text_from_file)
+  text_from_file.gsub(/[\.\?!:;,-]/,"")
 end
 
-def parse_double_quotes(text)
-  text.gsub(/\"/,"")
+def parse_double_quotes(text_from_file)
+  text_from_file.gsub(/\"/,"")
 end
