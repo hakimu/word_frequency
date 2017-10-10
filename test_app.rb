@@ -35,6 +35,9 @@ class WordFrequencyTest < Minitest::Test
   end
 
   def test_for_exclamation
+    text = "It's \" cold!"
+    result = parse_punctuation(text)
+    refute result.include?("!")
   end
 
   def test_for_colon
