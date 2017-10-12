@@ -7,13 +7,13 @@ class WordFrequencyTest < Minitest::Test
 
   def test_parse_text
     test_string = "This sentence has a period."
-    result = parse_punctuation(test_string)
+    result = WordFrequency.new(test_string).parse_punctuation
     refute result.include?(".")
   end
 
   def test_word_frequency
     test_string = "Today is friday friday and tomorrow is is is is saturday."
-    frequency = word_frequency(test_string)
+    frequency = WordFrequency.new(test_string).word_frequency
     assert_equal 1, frequency["Today"]
     assert_equal 5, frequency["is"]
     assert_equal 2, frequency["friday"]
@@ -24,50 +24,58 @@ class WordFrequencyTest < Minitest::Test
 
   def test_for_question_mark
     text = "Is it raining?"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?("?")
   end
 
   def test_for_period
     text = "It's raining."
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?(".")
   end
 
   def test_for_exclamation
     text = "It's \" cold!"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?("!")
   end
 
   def test_for_colon
     text = "The : is in the sentence"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?(":")
   end
 
   def test_for_semi_colon
     text = "The semi colon is at the end;"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?(";")
   end
 
   def test_for_dash
     text = "Today is - Sunday"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?("-")
   end
 
   def test_for_double_quotes
     text = "She said, \"Hi\""
-    result = parse_double_quotes(text)
+    result = WordFrequency.new(text).parse_double_quotes
     refute result.include?('"')
   end
 
   def test_for_coma
     text = "I went here third, second, first and last"
-    result = parse_punctuation(text)
+    result = WordFrequency.new(text).parse_punctuation
     refute result.include?(",")
+  end
+
+  def test_top_word_count
+    skip
+    test_string = "Today is friday friday and tomorrow is is is is saturday."
+    frequency = word_frequency(test_string)
+    values = [1,5,2,1,1,1]
+    assert_equal values, top_word_count
   end
 
 end
