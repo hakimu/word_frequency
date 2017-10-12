@@ -28,9 +28,14 @@ class WordFrequency
     @text_from_file.gsub(/\"/,"")
   end
 
-  def top_word_count
-    word_frequency(text_from_file).values
+  def sort_words
+    word_frequency.sort_by {|k,v| v}.reverse
+  end
+
+  def top_words(number)
+    sort_words.first(number)
   end
 
 end
+
 

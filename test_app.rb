@@ -70,12 +70,16 @@ class WordFrequencyTest < Minitest::Test
     refute result.include?(",")
   end
 
-  def test_top_word_count
-    skip
+  def test_sort_words
     test_string = "Today is friday friday and tomorrow is is is is saturday."
-    frequency = word_frequency(test_string)
-    values = [1,5,2,1,1,1]
-    assert_equal values, top_word_count
+    values = [["is", 5], ["friday", 2], ["saturday", 1], ["tomorrow", 1], ["and", 1], ["Today", 1]]
+    assert_equal values, WordFrequency.new(test_string).sort_words
+  end
+
+  def test_top_words
+    test_string = "Today is friday friday and tomorrow is is is is saturday."
+    top_two = [["is", 5], ["friday", 2]]
+    assert_equal top_two, WordFrequency.new(test_string).top_words(2)
   end
 
 end
