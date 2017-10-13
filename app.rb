@@ -33,9 +33,12 @@ class WordFrequency
   end
 
   def top_words(number)
-    sort_words.first(number)
+    sort_words.first(number).map do |word|
+      "#{word[0]} appears #{word[1]} times"
+    end
   end
 
 end
+
 
 

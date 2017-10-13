@@ -78,7 +78,8 @@ class WordFrequencyTest < Minitest::Test
 
   def test_top_words
     test_string = "Today is friday friday and tomorrow is is is is saturday."
-    top_two = [["is", 5], ["friday", 2]]
+    # top_two = [["is", 5], ["friday", 2]]
+    top_two = ["is appears 5 times", "friday appears 2 times"]
     assert_equal top_two, WordFrequency.new(test_string).top_words(2)
   end
 
